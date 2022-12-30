@@ -1,0 +1,35 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool:
+  vmImage: windows-latest
+
+steps:
+- task: Maven@3
+  displayName: Build & Test
+  inputs:
+    mavenPomFile: 'pom.xml'
+    goals: 'clean install package'
+
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: '$(Pipeline.Workspace)'
+    artifact: 'artifacts'
+    publishLocation: 'pipeline'
+    fileSharePath: 'artifacts'
+
+- task: MS-EASBuild.BuildNotification.task-BuildNotification.BuildNotification@1
+  displayName: 'Email Build Notification'
+  inputs:
+    MailFrom: 'pritiranga9@gmail.com'
+    MailTo: 'priti.ranga@testingxperts.com'
+    SmtpServer: smtp.gmail.com
+    BannerHeader: 'Build Results'
+    MailPwd: 'rpychqvpbtximhji'
+    PAT: ypzsamui4rcc2yrjznmynebljwbzl2m4tydavlv3nf7octidnypq
+
