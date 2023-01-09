@@ -26,10 +26,10 @@ steps:
 - task: MS-EASBuild.BuildNotification.task-BuildNotification.BuildNotification@1
   displayName: 'Email Build Notification'
   inputs:
-    MailFrom: 'pritiranga9@gmail.com'
-    MailTo: 'priti.ranga@testingxperts.com'
+    MailFrom: 'email@gmail.com'
+    MailTo: 'email@gmail.com
     SmtpServer: smtp.gmail.com
     BannerHeader: 'Build Results'
-    MailPwd: 'rpychqvpbtximhji'
-    PAT: ypzsamui4rcc2yrjznmynebljwbzl2m4tydavlv3nf7octidnypq
+    MailPwd: $(mailapppasswd)
+    PAT: $(AzurePAT)
 
